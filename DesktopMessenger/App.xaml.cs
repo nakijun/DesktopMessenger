@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Windows;
+using Application = System.Windows.Application;
 
 namespace DesktopMessenger
 {
@@ -12,5 +12,9 @@ namespace DesktopMessenger
     /// </summary>
     public partial class App : Application
     {
+        private App()
+        {
+            
+        }
     }
 }
