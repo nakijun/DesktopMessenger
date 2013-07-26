@@ -5,10 +5,10 @@ using System.Text;
 
 namespace DesktopMessenger.Common
 {
-    public interface IMessengerAdapter
+    public interface IMessengerAdapter : IDisposable
     {
         event EventHandler<PresenceEventArgs> PresenceUpdated;
-        event EventHandler<MessageEventArgs>  MessageReceived;
+        event EventHandler<MessageEventArgs> MessageReceived;
         event EventHandler<IsTypingEventArgs> IsTypingUpdated;
 
         void Connect(string username, string password);

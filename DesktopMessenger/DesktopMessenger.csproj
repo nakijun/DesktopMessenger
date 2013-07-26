@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MessengerAdapterFactory.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="Views\ChatView.xaml.cs">
@@ -113,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DesktopMessenger.Common\DesktopMessenger.Common.csproj">
+      <Project>{97AA30F7-50F9-40F3-BAA1-E61495F42136}</Project>
+      <Name>DesktopMessenger.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
