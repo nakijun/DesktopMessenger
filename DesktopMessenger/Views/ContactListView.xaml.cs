@@ -10,23 +10,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DesktopMessenger.ViewModels;
 
 namespace DesktopMessenger.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ContactListView : Window
     {
-        public MainWindow()
+        public ContactListView()
         {
             InitializeComponent();
-        }
-
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-            SettingsView settings = new SettingsView();
-            settings.ShowDialog();
+            DataContext = new ContactListViewModel();
         }
     }
 }
