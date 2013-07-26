@@ -60,8 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< .mine
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ShowSettingsCommand.cs" />
+=======
+    <Compile Include="MessengerAdapterFactory.cs" />
+
+>>>>>>> .theirs
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Contacts.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
@@ -136,6 +141,12 @@
     <Resource Include="Icons\status_online.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DesktopMessenger.Common\DesktopMessenger.Common.csproj">
+      <Project>{97AA30F7-50F9-40F3-BAA1-E61495F42136}</Project>
+      <Name>DesktopMessenger.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,7 +10,7 @@ using agsXMPP.protocol.extensions.chatstates;
 
 namespace DesktopMessenger.Facebook
 {
-    public class FacebookMessengerAdapter : IMessengerAdapter, IDisposable
+    public class FacebookMessengerAdapter : IMessengerAdapter
     {
         #region Fields
         private readonly XmppClientConnection _xmppClientConnection;
@@ -24,6 +24,8 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Properties
+        public static string ServiceName { get { return "Facebook"; } } //HACK used for plugin registeration
+
         public PresenceStatus Presence
         {
             get { return _presenceStatus; }
