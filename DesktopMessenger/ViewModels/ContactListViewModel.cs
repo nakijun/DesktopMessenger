@@ -12,7 +12,7 @@ namespace DesktopMessenger.ViewModels
 {
     internal class ContactListViewModel
     {
-        private Contact contact;
+        private readonly Contact contact;
         public ContactListViewModel()
         {
             ShowSettingsCommand = new ShowSettingsCommand(this);
@@ -20,13 +20,9 @@ namespace DesktopMessenger.ViewModels
             contact = new Contact(Resources.status_online.ToBitmap(), "Contact1");
         }
 
-        public ICommand ShowSettingsCommand 
-        { 
-            get; 
-            private set; 
-        }
-
+        public ICommand ShowSettingsCommand { get; private set; }
         public ICommand ExitCommand { get; private set; }
+
         public Contact Contact
         {
             get { return contact; }

@@ -40,17 +40,11 @@ namespace DesktopMessenger.Models
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private string p1;
-        private string p2;
 
-        private void OnPropertyChanged(string p)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(p));
-            }
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

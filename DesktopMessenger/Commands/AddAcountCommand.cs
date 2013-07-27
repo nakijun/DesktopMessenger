@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Windows.Input;
 using DesktopMessenger.ViewModels;
 
 namespace DesktopMessenger.Commands
 {
-    internal class ExitCommand : ICommand
+    internal class AddAcountCommand : ICommand
     {
-        private ContactListViewModel _contactListViewModel;
+        private readonly SettingsViewModel _settingsViewModel;
 
-        public ExitCommand(ContactListViewModel contactListViewModel)
+        public AddAcountCommand(SettingsViewModel settingsViewModel)
         {
-            _contactListViewModel = contactListViewModel;
+            // TODO: Complete member initialization
+            _settingsViewModel = settingsViewModel;
         }
 
         public bool CanExecute(object parameter)
@@ -24,10 +24,11 @@ namespace DesktopMessenger.Commands
 
         public event EventHandler CanExecuteChanged;
 
+        
 
         public void Execute(object parameter)
         {
-            Application.Current.Shutdown();
+           _settingsViewModel.AddAccount("Facebook","demo","demo");
         }
     }
 }

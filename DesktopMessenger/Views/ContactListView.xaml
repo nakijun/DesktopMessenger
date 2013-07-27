@@ -4,13 +4,6 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         Title="Desktop Messenger" Height="539" Width="281">
     <StackPanel>
-        <StackPanel.Resources>
-            <ControlTemplate x:Key="StatusItemTemplate" TargetType="ComboBoxItem">
-                <StackPanel Orientation="Horizontal">
-                    
-                </StackPanel>
-            </ControlTemplate>
-        </StackPanel.Resources>
     	<StackPanel x:Name="ConfPanel" Height="29" Orientation="Horizontal" HorizontalAlignment="Right">
             <ComboBox x:Name="statusBox" Width="120" HorizontalAlignment="Left" SelectedIndex="3" FontSize="16">
                 <ComboBoxItem Content="Online"/>
