@@ -56,5 +56,10 @@ namespace DesktopMessenger.Models
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public override string ToString()
+        {
+            return Protocol.ToString();
+        }
     }
 }
