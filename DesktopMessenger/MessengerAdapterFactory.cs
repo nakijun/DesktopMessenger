@@ -48,7 +48,9 @@ namespace DesktopMessenger
 
         public static IMessengerAdapter CreateInstance(string name)
         {
-            return Activator.CreateInstance(_adapters[name]) as IMessengerAdapter;
+            if (_adapters.ContainsKey(name))
+                return Activator.CreateInstance(_adapters[name]) as IMessengerAdapter;
+            throw new Exception("An adapter with this name does not exist.");
         }
 
         /*public static T CreateInstance<T>() where T : IMessengerAdapter, new()
