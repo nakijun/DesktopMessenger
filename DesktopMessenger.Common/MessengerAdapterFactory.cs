@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using DesktopMessenger.Common;
 
-namespace DesktopMessenger
+namespace DesktopMessenger.Common
 {
     public static class MessengerAdapterFactory
     {

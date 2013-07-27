@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IsTypingEventArgs.cs" />
+    <Compile Include="MessengerAdapterFactory.cs" />
     <Compile Include="PresenceEventArgs.cs" />
     <Compile Include="IMessengerAdapter.cs" />
     <Compile Include="MessageEventArgs.cs" />

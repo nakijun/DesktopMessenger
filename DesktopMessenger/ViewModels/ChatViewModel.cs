@@ -1,15 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DesktopMessenger.Common;
 using DesktopMessenger.Models;
 
 namespace DesktopMessenger.ViewModels
 {
-    public class ChatViewModel
+    internal class ChatViewModel
     {
-        public ChatViewModel()
+        private readonly Chat _chat;
+        private readonly Contact _contact;
+        private readonly IMessengerAdapter _adapter;
+
+        public ChatViewModel(IMessengerAdapter adapter, Contact contact)
         {
+            _chat = new Chat();
+            _contact = contact;
+            _adapter = adapter;
+
+            _adapter.MessageReceived += MessageReceived;
+        }
+
+        private void MessageReceived(object sender, MessageEventArgs e)
+        {
+            if (e.Contact == _contact.Name)
+            {
+                _chat.Messages.Add(new Message { Contact = _contact, Content = e.Message });
+            }
         }
     }
 }
