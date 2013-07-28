@@ -146,6 +146,10 @@
       <Project>{97AA30F7-50F9-40F3-BAA1-E61495F42136}</Project>
       <Name>DesktopMessenger.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesktopMessenger.Facebook\DesktopMessenger.Facebook.csproj">
+      <Project>{03FB2171-E229-4336-A3F1-305BD6AA0ED2}</Project>
+      <Name>DesktopMessenger.Facebook</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

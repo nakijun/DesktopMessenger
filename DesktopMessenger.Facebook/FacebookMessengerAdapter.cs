@@ -24,7 +24,7 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Properties
-        public static string ServiceName { get { return "Facebook"; } } //HACK used for plugin registeration
+        public string ServiceName { get { return "Facebook"; } }
 
         public PresenceStatus Presence
         {
@@ -73,7 +73,6 @@ namespace DesktopMessenger.Facebook
             _xmppClientConnection.Close();
         }
         #endregion
-
 
         #region Event Handlers
         private void XmppClientConnection_OnLogin(object sender)

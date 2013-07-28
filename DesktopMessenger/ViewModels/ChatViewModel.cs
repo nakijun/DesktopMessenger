@@ -20,7 +20,7 @@ namespace DesktopMessenger.ViewModels
 
         private void MessageReceived(object sender, MessageEventArgs e)
         {
-            if (e.Contact == _contact.Name)
+            if (e.Contact == _contact.Id)
             {
                 _chat.Messages.Add(new Message { Contact = _contact, Content = e.Message });
             }

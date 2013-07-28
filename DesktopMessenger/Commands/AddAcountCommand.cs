@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using DesktopMessenger.Common;
 using DesktopMessenger.ViewModels;
 
 namespace DesktopMessenger.Commands
 {
     internal class AddAcountCommand : ICommand
     {
-        private readonly SettingsViewModel _settingsViewModel;
+        private readonly SettingsViewModel _viewModel;
 
-        public AddAcountCommand(SettingsViewModel settingsViewModel)
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public AddAcountCommand(SettingsViewModel viewModel)
         {
             // TODO: Complete member initialization
-            _settingsViewModel = settingsViewModel;
+            _viewModel = viewModel;
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _viewModel.CanAddAccount;
         }
-
-        public event EventHandler CanExecuteChanged;
-
-        
 
         public void Execute(object parameter)
         {
-           _settingsViewModel.AddAccount("Facebook","demo","demo");
+            _viewModel.AddAccount(MessengerAdapterFactory.CreateInstance(_viewModel.SelectedService), _viewModel.Username, "password");
         }
     }
 }

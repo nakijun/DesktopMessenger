@@ -1,47 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
+using System.Windows.Input;
 using DesktopMessenger.Commands;
 using DesktopMessenger.Common;
-using System.Windows.Input;
 using DesktopMessenger.Models;
-using System.ComponentModel;
 
 namespace DesktopMessenger.ViewModels
 {
     internal class SettingsViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<Account> accounts; 
+        private readonly ObservableCollection<Account> _accounts = new ObservableCollection<Account>();
+        private string _username;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand AddAccountCommand { get; private set; }
+        public ObservableCollection<Account> Accounts { get { return _accounts; } }
+        public string[] Adapters { get { return MessengerAdapterFactory.Adapters; } }
+        public string SelectedService { get; set; }
+        public string Username
+        {
+            get { return _username; }
+            set
+            {
+                _username = value;
+                OnPropertyChanged("Username");
+            }
+        }
+
+        public bool CanAddAccount
+        {
+            get { return !(String.IsNullOrWhiteSpace(SelectedService) || String.IsNullOrWhiteSpace(Username) || String.IsNullOrWhiteSpace("Password")); } //TODO read password from passwordbox _securely_
+        }
 
         public SettingsViewModel()
         {
             AddAccountCommand = new AddAcountCommand(this);
-            accounts = new ObservableCollection<Account>();
-            accounts.Add(new Account("Facebook","demo","demo"));
         }
 
-        public Account Account { get; private set; }
-
-        public ICommand AddAccountCommand { get; private set; }
-        public ObservableCollection<Account> Accounts
+        public void AddAccount(IMessengerAdapter adapter, string username, string password)
         {
-            get { return accounts; }
+            _accounts.Add(new Account(adapter, username, password));
         }
-
-        public void AddAccount(string protocol, string username, string password)
-        {
-            accounts.Add(new Account(protocol,username,password));
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-    }   
+    }
 }

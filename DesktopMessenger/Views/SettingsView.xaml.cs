@@ -26,17 +26,5 @@ namespace DesktopMessenger.Views
             InitializeComponent();
             DataContext = new SettingsViewModel();
         }
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //switch (accountTypeBox.Text)
-            //{
-            //    case "Facebook":
-            //        TreeViewItem fbTreeViewItem = new TreeViewItem();
-            //        fbTreeViewItem.Name = "facebookAccountTreeItem";
-            //        fbTreeViewItem.Header = "Facebook";
-            //        AccountsTreeViewItem.Items.Add(fbTreeViewItem);
-            //}
-        }
     }
 }

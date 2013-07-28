@@ -13,11 +13,16 @@ namespace DesktopMessenger.Models
         private Bitmap _picture;
         private string _name;
 
-        public Contact(Bitmap pic, string name)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Contact(string id, Bitmap pic, string name)
         {
+            Id = id;
             _picture = pic;
             _name = name;
         }
+
+        public string Id { get; private set; }
 
         public Bitmap Picture
         {
@@ -38,9 +43,6 @@ namespace DesktopMessenger.Models
                 OnPropertyChanged("name");
             }
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

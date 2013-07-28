@@ -3,63 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using DesktopMessenger.Common;
 
 namespace DesktopMessenger.Models
 {
-    internal class Account : INotifyPropertyChanged
+    internal class Account
     {
-        private string protocol;
-        private string username;
-        private string password;
+        private readonly string _password; //TODO use securestring
 
-        public Account(string protocol, string username, string password)
+        public Account(IMessengerAdapter adapter, string username, string password)
         {
-            this.protocol = protocol;
-            this.username = username;
-            this.password = password;
+            Adapter = adapter;
+            Username = username;
+            _password = password;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string Password
-        {
-            get { return password; }
-            set 
-            { 
-                password = value;
-                OnPropertyChanged("password");
-            }
-        }
-
-        public string Username
-        {
-            get { return username; }
-            set
-            {
-                username = value;
-                OnPropertyChanged("username");
-            }
-        }
-
-        public string Protocol
-        {
-            get { return protocol; }
-            set
-            {
-                protocol = value;
-                OnPropertyChanged("protocol");
-            }
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public IMessengerAdapter Adapter { get; set; }
+        public string Username { get; set; }
 
         public override string ToString()
         {
-            return Protocol.ToString();
+            return String.Format("{0} ({1})", Username, Adapter.ServiceName);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DesktopMessenger.Common
         event EventHandler<PresenceEventArgs> PresenceUpdated;
         event EventHandler<MessageEventArgs> MessageReceived;
         event EventHandler<IsTypingEventArgs> IsTypingUpdated;
-
+        string ServiceName { get; }
         void Connect(string username, string password);
     }
 }

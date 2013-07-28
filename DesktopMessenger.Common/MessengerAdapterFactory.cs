@@ -25,11 +25,11 @@ namespace DesktopMessenger.Common
                         if (type.GetInterface("IMessengerAdapter") == null)
                             continue;
 
-                        var name =
-                            type.GetProperty("ServiceName",
-                                             BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty)
-                                .GetValue(null, null)
-                                .ToString();
+                        string name;
+                        using (var adapter = Activator.CreateInstance(type) as IMessengerAdapter)
+                        {
+                            name = adapter.ServiceName;
+                        }
                         if (!_adapters.ContainsKey(name))
                             _adapters.Add(name, type);
                     }
