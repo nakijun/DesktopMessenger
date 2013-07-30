@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesktopMessenger.Common
 {
-    public interface IMessengerAdapter : IDisposable
+    public interface IMessengerService : IDisposable
     {
         event EventHandler<PresenceEventArgs> PresenceUpdated;
         event EventHandler<MessageEventArgs> MessageReceived;

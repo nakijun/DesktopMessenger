@@ -16,8 +16,8 @@ namespace DesktopMessenger.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand AddAccountCommand { get; private set; }
-        public ObservableCollection<Account> Accounts { get { return _accounts; } }
-        public string[] Adapters { get { return MessengerAdapterFactory.Adapters; } }
+        public ObservableCollection<Account> Accounts { get { return AccountManager.Accounts; } }
+        public string[] Services { get { return MessengerServiceFactory.Services; } }
         public string SelectedService { get; set; }
         public string Username
         {
@@ -39,9 +39,9 @@ namespace DesktopMessenger.ViewModels
             AddAccountCommand = new AddAcountCommand(this);
         }
 
-        public void AddAccount(IMessengerAdapter adapter, string username, string password)
+        public void AddAccount()
         {
-            _accounts.Add(new Account(adapter, username, password));
+            AccountManager.Add(new Account(MessengerServiceFactory.CreateInstance(SelectedService), Username, "password"));
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

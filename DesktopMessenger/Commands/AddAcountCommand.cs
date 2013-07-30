@@ -20,7 +20,6 @@ namespace DesktopMessenger.Commands
 
         public AddAcountCommand(SettingsViewModel viewModel)
         {
-            // TODO: Complete member initialization
             _viewModel = viewModel;
         }
 
@@ -31,7 +30,7 @@ namespace DesktopMessenger.Commands
 
         public void Execute(object parameter)
         {
-            _viewModel.AddAccount(MessengerAdapterFactory.CreateInstance(_viewModel.SelectedService), _viewModel.Username, "password");
+            _viewModel.AddAccount();
         }
     }
 }

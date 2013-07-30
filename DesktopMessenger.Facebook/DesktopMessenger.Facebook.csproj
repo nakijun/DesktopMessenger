@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FacebookConverter.cs" />
-    <Compile Include="FacebookMessengerAdapter.cs" />
+    <Compile Include="FacebookMessengerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ using agsXMPP.protocol.extensions.chatstates;
 
 namespace DesktopMessenger.Facebook
 {
-    public class FacebookMessengerAdapter : IMessengerAdapter
+    public class FacebookMessengerService : IMessengerService
     {
         #region Fields
         private readonly XmppClientConnection _xmppClientConnection;
@@ -43,7 +43,7 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Constructor
-        public FacebookMessengerAdapter()
+        public FacebookMessengerService()
         {
             _xmppClientConnection = new XmppClientConnection("chat.facebook.com");
             _xmppClientConnection.OnAuthError += XmppClientConnection_OnAuthError;

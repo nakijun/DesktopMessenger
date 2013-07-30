@@ -17,7 +17,7 @@ namespace DesktopMessenger.Tests
             Console.Write("Password: ");
             string password = Console.ReadLine();
 
-            using (var facebook = MessengerAdapterFactory.CreateInstance("Facebook"))
+            using (var facebook = MessengerServiceFactory.CreateInstance("Facebook"))
             {
                 facebook.PresenceUpdated += Facebook_PresenceUpdated;
                 facebook.MessageReceived += Facebook_MessageReceived;

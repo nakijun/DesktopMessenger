@@ -41,12 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IsTypingEventArgs.cs" />
-    <Compile Include="MessengerAdapterFactory.cs" />
+    <Compile Include="MessengerServiceFactory.cs" />
     <Compile Include="PresenceEventArgs.cs" />
-    <Compile Include="IMessengerAdapter.cs" />
+    <Compile Include="IMessengerService.cs" />
     <Compile Include="MessageEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PresenceStatus.cs" />
+    <Compile Include="ServiceNotFoundException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

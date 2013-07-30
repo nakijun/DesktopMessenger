@@ -7,15 +7,15 @@ namespace DesktopMessenger.ViewModels
     {
         private readonly Chat _chat;
         private readonly Contact _contact;
-        private readonly IMessengerAdapter _adapter;
+        private readonly IMessengerService _service;
 
-        public ChatViewModel(IMessengerAdapter adapter, Contact contact)
+        public ChatViewModel(IMessengerService service, Contact contact)
         {
             _chat = new Chat();
             _contact = contact;
-            _adapter = adapter;
+            _service = service;
 
-            _adapter.MessageReceived += MessageReceived;
+            _service.MessageReceived += MessageReceived;
         }
 
         private void MessageReceived(object sender, MessageEventArgs e)
