@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security;
 using System.Security.Authentication;
 using DesktopMessenger.Common;
 using agsXMPP;
@@ -58,9 +59,9 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Methods
-        public void Connect(string username, string password)
+        public void Connect(string username, SecureString password)
         {
-            _xmppClientConnection.Open(username, password);
+            _xmppClientConnection.Open(username, password.GetString());
         }
 
         public void Dispose()

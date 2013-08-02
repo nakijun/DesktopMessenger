@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using DesktopMessenger.Common;
 using DesktopMessenger.Facebook;
@@ -15,7 +16,18 @@ namespace DesktopMessenger.Tests
             Console.Write("Username: ");
             string username = Console.ReadLine();
             Console.Write("Password: ");
-            string password = Console.ReadLine();
+            var password = new SecureString();
+            ConsoleKeyInfo key;
+            do
+            {
+                key = Console.ReadKey(true);
+
+                if (!Char.IsControl(key.KeyChar))
+                {
+                    password.AppendChar(key.KeyChar);
+                    Console.Write("*");
+                }
+            } while (key.Key != ConsoleKey.Enter);
 
             using (var facebook = MessengerServiceFactory.CreateInstance("Facebook"))
             {

@@ -26,5 +26,10 @@ namespace DesktopMessenger.Views
             InitializeComponent();
             DataContext = new SettingsViewModel();
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            (DataContext as SettingsViewModel).Password = PasswordBox.SecurePassword;
+        }
     }
 }

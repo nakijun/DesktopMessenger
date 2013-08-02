@@ -10,16 +10,8 @@ namespace DesktopMessenger.Models
 {
     internal class Account
     {
-        private readonly string _password; //TODO use securestring
-
-        public Account(IMessengerService service, string username, string password)
-        {
-            Service = service;
-            Username = username;
-            _password = password;
-        }
-
         public IMessengerService Service { get; set; }
         public string Username { get; set; }
+        public SecureString Password { get; set; }
     }
 }

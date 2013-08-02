@@ -23,7 +23,7 @@
         <Label Content="Service:" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="229,34,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="343,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}"/>
-        <!-- PasswordBox HorizontalAlignment="Left" Height="23" Margin="343,65,0,0" VerticalAlignment="Top" Width="120"/ -->
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Height="23" Margin="343,65,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="PasswordBox_PasswordChanged"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="229,61,0,0" VerticalAlignment="Top"/>
         <Button Content="Add Acount" HorizontalAlignment="Left" Margin="280,120,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=AddAccountCommand}"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="388,120,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=CancelCommand}" IsCancel="True"/>

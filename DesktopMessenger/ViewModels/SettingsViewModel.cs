@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Security;
 using System.Windows.Input;
 using DesktopMessenger.Commands;
 using DesktopMessenger.Common;
@@ -28,10 +29,16 @@ namespace DesktopMessenger.ViewModels
                 OnPropertyChanged("Username");
             }
         }
+        public SecureString Password { get; set; }
 
         public bool CanAddAccount
         {
-            get { return !(String.IsNullOrWhiteSpace(SelectedService) || String.IsNullOrWhiteSpace(Username) || String.IsNullOrWhiteSpace("Password")); } //TODO read password from passwordbox _securely_
+            get
+            {
+                return
+                    !String.IsNullOrWhiteSpace(SelectedService) && !String.IsNullOrWhiteSpace(Username) &&
+                    (Password != null) && (Password.Length != 0);
+            }
         }
 
         public SettingsViewModel()
@@ -41,7 +48,12 @@ namespace DesktopMessenger.ViewModels
 
         public void AddAccount()
         {
-            AccountManager.Add(new Account(MessengerServiceFactory.CreateInstance(SelectedService), Username, "password"));
+            AccountManager.Add(new Account
+                {
+                    Username = Username,
+                    Password = Password,
+                    Service = MessengerServiceFactory.CreateInstance(SelectedService)
+                });
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
