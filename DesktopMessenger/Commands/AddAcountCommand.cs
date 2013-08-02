@@ -10,7 +10,7 @@ namespace DesktopMessenger.Commands
 {
     internal class AddAcountCommand : ICommand
     {
-        private readonly SettingsViewModel _viewModel;
+        private readonly AccountSettingsViewModel _viewModel;
 
         public event EventHandler CanExecuteChanged
         {
@@ -18,7 +18,7 @@ namespace DesktopMessenger.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public AddAcountCommand(SettingsViewModel viewModel)
+        public AddAcountCommand(AccountSettingsViewModel viewModel)
         {
             _viewModel = viewModel;
         }

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DesktopMessenger.Views.SettingsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Settings" Height="356" Width="535" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+        Title="Settings" Height="356" Width="535" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" xmlns:my="clr-namespace:DesktopMessenger.Views">
     <Grid>
         <TreeView HorizontalAlignment="Left" Width="187">
             <TreeViewItem Header="Accounts" IsExpanded="True" ItemsSource="{Binding Path=Accounts, UpdateSourceTrigger=PropertyChanged}">
@@ -19,13 +19,7 @@
             </TreeViewItem>
             <TreeViewItem Header="General"/>
         </TreeView>
-        <ComboBox HorizontalAlignment="Left" Margin="343,10,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=Services}" SelectedValue="{Binding Path=SelectedService}"></ComboBox>
-        <Label Content="Service:" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top"/>
-        <Label Content="Username:" HorizontalAlignment="Left" Margin="229,34,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="343,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}"/>
-        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Height="23" Margin="343,65,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="PasswordBox_PasswordChanged"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="229,61,0,0" VerticalAlignment="Top"/>
-        <Button Content="Add Acount" HorizontalAlignment="Left" Margin="280,120,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=AddAccountCommand}"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="388,120,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=CancelCommand}" IsCancel="True"/>
+        <my:AccountSettingsView HorizontalAlignment="Left" Margin="248,84,0,0" x:Name="accountSettingsView1" VerticalAlignment="Top" />
+        <!-- placeholder for setting usercontrols -->
     </Grid>
 </Window>
