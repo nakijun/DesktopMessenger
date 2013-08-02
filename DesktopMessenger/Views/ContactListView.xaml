@@ -4,36 +4,41 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         Title="Desktop Messenger" Height="539" Width="281">
     <StackPanel>
-    	<StackPanel x:Name="ConfPanel" Height="29" Orientation="Horizontal" HorizontalAlignment="Right">
-            <ComboBox x:Name="statusBox" Width="120" HorizontalAlignment="Left" SelectedIndex="3" FontSize="16">
+    	<StackPanel Height="29" Orientation="Horizontal" HorizontalAlignment="Right">
+            <ComboBox Width="120" HorizontalAlignment="Left" SelectedIndex="3" FontSize="16">
                 <ComboBoxItem Content="Online"/>
     			<ComboBoxItem Content="Away"/>
     			<ComboBoxItem Content="Busy"/>
     			<ComboBoxItem Content="Offline"/>
     		</ComboBox>
-    		<Button x:Name="settingBtn" Content="Settings" HorizontalAlignment="Right" Height="30" Command="{Binding ShowSettingsCommand}"/>
+    		<Button Content="Settings" HorizontalAlignment="Right" Height="30" Command="{Binding Path=ShowSettingsCommand}"/>
     	</StackPanel>
-    	<tb:TaskbarIcon ToolTip="Desktop Messenger">
+        <ListBox ItemsSource="{Binding Path=ContactLists}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Expander IsExpanded="True" Header="Service Name">
+                        <ListBox ItemsSource="{Binding Path=Contacts}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Width="15" Source="{Binding Path=Picture}"/>
+                                        <TextBlock Text="{Binding Path=Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListBox>
+                    </Expander>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        
+        <tb:TaskbarIcon ToolTip="Desktop Messenger">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu Background="AliceBlue">
-                	<MenuItem Header="Settings" Command="{Binding ShowSettingsCommand}" />
-                	<MenuItem Header="Quit" Command="{Binding ExitCommand}"/>
+                    <MenuItem Header="Settings" Command="{Binding Path=ShowSettingsCommand}"/>
+                    <MenuItem Header="Quit" Command="{Binding Path=ExitCommand}"/>
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
-        <ListView x:Name="ContactsList" VerticalContentAlignment="Center">
-            <ListView.Resources>
-                <ControlTemplate x:Key="ContactItemTemplate">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Height="15" Width="15" Source="{Binding Path=Contact.Picture}"/>
-                        <TextBlock FontSize="14" FontFamily="Segoe UI" Text="{Binding Path=Contact.Name}" />
-                    </StackPanel>
-                </ControlTemplate>
-            </ListView.Resources>
-            
-            <ListViewItem Template="{DynamicResource ContactItemTemplate}" Content="{Binding Contact}"></ListViewItem>
-        </ListView>
-    </StackPanel>
-
-    
+    </StackPanel>    
 </Window>

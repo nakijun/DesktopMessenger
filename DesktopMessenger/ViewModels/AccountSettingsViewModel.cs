@@ -46,12 +46,10 @@ namespace DesktopMessenger.ViewModels
 
         public void AddAccount()
         {
-            AccountManager.Add(new Account
-                {
-                    Username = Username,
-                    Password = Password,
-                    Service = MessengerServiceFactory.CreateInstance(SelectedService)
-                });
+            var service = MessengerServiceFactory.CreateInstance(SelectedService);
+            var account = new Account {Username = Username, Password = Password, Service = service};
+            AccountManager.Add(account);
+            //ServiceManager.Connect(service, account);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

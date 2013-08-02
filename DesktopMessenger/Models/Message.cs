@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesktopMessenger.Models
 {
-    public class Message
+    internal class Message
     {
         public Contact Contact { get; set; }
         public string Content { get; set; }

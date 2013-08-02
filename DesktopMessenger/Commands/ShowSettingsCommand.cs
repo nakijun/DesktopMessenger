@@ -9,14 +9,15 @@ namespace DesktopMessenger.Commands
 {
     internal class ShowSettingsCommand : ICommand
     {
-        private ContactListViewModel _viewModel;
+        private readonly ContactListViewModel _viewModel;
+
+        public event EventHandler CanExecuteChanged;
 
         public ShowSettingsCommand(ContactListViewModel viewModel)
         {
             _viewModel = viewModel;
         }
 
-        #region ICommand Members
         public bool CanExecute(object parameter)
         {
             return true;
@@ -26,8 +27,5 @@ namespace DesktopMessenger.Commands
         {
             _viewModel.ShowSettings();
         }
-
-        public event EventHandler CanExecuteChanged;
-        #endregion
     }
 }

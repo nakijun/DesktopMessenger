@@ -65,6 +65,7 @@
     <Compile Include="Commands\AddAcountCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ShowSettingsCommand.cs" />
+    <Compile Include="Models\ContactList.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Chat.cs" />

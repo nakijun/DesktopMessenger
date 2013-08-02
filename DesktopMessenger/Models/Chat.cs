@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DesktopMessenger.Models
 {
-    public class Chat : INotifyPropertyChanged
+    internal class Chat : INotifyPropertyChanged
     {
         private string _title;
         public event PropertyChangedEventHandler PropertyChanged;

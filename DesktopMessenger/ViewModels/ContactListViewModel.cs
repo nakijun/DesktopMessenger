@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using DesktopMessenger.Commands;
 using DesktopMessenger.Views;
 using DesktopMessenger.Models;
@@ -12,28 +14,39 @@ namespace DesktopMessenger.ViewModels
 {
     internal class ContactListViewModel
     {
-        private readonly Contact _contact;
+        private readonly ObservableCollection<ContactList> _contactLists = new ObservableCollection<ContactList>();
+
+        public ICommand ShowSettingsCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
+
+        public ObservableCollection<ContactList> ContactLists
+        {
+            get { return _contactLists; }
+        }
 
         public ContactListViewModel()
         {
             ShowSettingsCommand = new ShowSettingsCommand(this);
             ExitCommand = new ExitCommand(this);
-            _contact = new Contact(Guid.NewGuid().ToString(), Resources.status_online.ToBitmap(), "Contact1"); //TODO use real data in the future
+
+            var contactList = new ContactList();
+            //TODO use real data in the future
+            contactList.Contacts.Add(new Contact(Guid.NewGuid().ToString())
+                {
+                    Name = "foo",
+                    Picture = Resources.status_online.ToBitmap()
+                });
+            contactList.Contacts.Add(new Contact(Guid.NewGuid().ToString())
+                {
+                    Name = "bar",
+                    Picture = Resources.status_offline.ToBitmap()
+                });
+            ContactLists.Add(contactList);
         }
-
-        public ICommand ShowSettingsCommand { get; private set; }
-        public ICommand ExitCommand { get; private set; }
-
-        public Contact Contact
-        {
-            get { return _contact; }
-        }
-
 
         public void ShowSettings()
         {
-            SettingsView settings = new SettingsView();
-            settings.ShowDialog();
+            new SettingsView().ShowDialog();
         }
     }
 }
