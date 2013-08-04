@@ -64,17 +64,18 @@
     <Compile Include="AccountManager.cs" />
     <Compile Include="Commands\AddAcountCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\ShowContactListCommand.cs" />
     <Compile Include="Commands\ShowSettingsCommand.cs" />
     <Compile Include="Models\ContactList.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="ThemeManager.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContactListViewModel.cs" />
     <Compile Include="ViewModels\AccountSettingsViewModel.cs" />
+    <Compile Include="ViewModels\QuickbarViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\AccountSettingsView.xaml.cs">
       <DependentUpon>AccountSettingsView.xaml</DependentUpon>
@@ -88,6 +89,9 @@
     </Compile>
     <Compile Include="Views\ContactListView.xaml.cs">
       <DependentUpon>ContactListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuickbarView.xaml.cs">
+      <DependentUpon>QuickbarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
@@ -106,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContactListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuickbarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

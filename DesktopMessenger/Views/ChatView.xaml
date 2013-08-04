@@ -4,13 +4,23 @@
         Title="ChatView" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <!-- TODO implement themes -->
-        <Label Grid.Row="0" Foreground="White" Background="LightGray" Content="TITLE" />
-        <TextBox Grid.Row="1" Foreground="Black" Background="White" IsReadOnly="True" Text="CHATLOG" />
-        <TextBox Grid.Row="2" Foreground="Black" Background="White" Text="INPUT" />
+        <Label Grid.Row="0" Foreground="White" Background="LightGray" Content="TITLE"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Messages}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Contact.Name}"/>
+                        <TextBlock Text=": "/>
+                        <TextBlock Text="{Binding Path=Content}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        <TextBox Grid.Row="2" Foreground="Black" Background="White" Text="INPUT"/>
     </Grid>
 </Window>

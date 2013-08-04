@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,18 +11,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DesktopMessenger.ViewModels;
-using DesktopMessenger.Common;
 
 namespace DesktopMessenger.Views
 {
     /// <summary>
-    /// Interaction logic for SettingsView.xaml
+    /// Interaction logic for QuickbarView.xaml
     /// </summary>
-    public partial class SettingsView : Window
+    public partial class QuickbarView : Window
     {
-        public SettingsView()
+        public QuickbarView()
         {
             InitializeComponent();
+            DataContext = new QuickbarViewModel();
         }
     }
 }

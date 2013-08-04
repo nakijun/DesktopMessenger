@@ -3,7 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Settings" Height="356" Width="535" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" xmlns:my="clr-namespace:DesktopMessenger.Views">
     <Grid>
-        <TreeView HorizontalAlignment="Left" Width="187">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0" Width="150">
+            <TreeViewItem Header="General"/>
             <TreeViewItem Header="Accounts" IsExpanded="True" ItemsSource="{Binding Path=Accounts, UpdateSourceTrigger=PropertyChanged}">
                 <TreeViewItem.ItemTemplate>
                     <HierarchicalDataTemplate>
@@ -17,9 +22,8 @@
                     </HierarchicalDataTemplate>
                 </TreeViewItem.ItemTemplate>
             </TreeViewItem>
-            <TreeViewItem Header="General"/>
         </TreeView>
-        <my:AccountSettingsView HorizontalAlignment="Left" Margin="248,84,0,0" x:Name="accountSettingsView1" VerticalAlignment="Top" />
+        <Frame Grid.Column="1" Content="{Binding Path=CurrentPage}"/>
         <!-- placeholder for setting usercontrols -->
     </Grid>
 </Window>

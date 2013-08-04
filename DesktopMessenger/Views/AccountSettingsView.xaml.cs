@@ -18,17 +18,18 @@ namespace DesktopMessenger.Views
     /// <summary>
     /// Interaction logic for AccountSettingsView.xaml
     /// </summary>
-    public partial class AccountSettingsView : UserControl
+    public partial class AccountSettingsView : Page
     {
         public AccountSettingsView()
         {
             InitializeComponent();
-            DataContext = new AccountSettingsViewModel();
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            (DataContext as AccountSettingsViewModel).Password = PasswordBox.SecurePassword;
+            var viewModel = DataContext as AccountSettingsViewModel;
+            if (viewModel != null)
+                viewModel.Password = PasswordBox.SecurePassword;
         }
     }
 }

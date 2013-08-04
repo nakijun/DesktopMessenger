@@ -49,7 +49,7 @@ namespace DesktopMessenger.ViewModels
             var service = MessengerServiceFactory.CreateInstance(SelectedService);
             var account = new Account {Username = Username, Password = Password, Service = service};
             AccountManager.Add(account);
-            //ServiceManager.Connect(service, account);
+            ServiceManager.Connect(account);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

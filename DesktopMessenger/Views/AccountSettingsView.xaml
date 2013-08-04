@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DesktopMessenger.Views.AccountSettingsView"
+﻿<Page x:Class="DesktopMessenger.Views.AccountSettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Height="125" Width="200">
@@ -23,4 +23,4 @@
         <PasswordBox Grid.Row="2" Grid.Column="1" Name="PasswordBox" Width="120" PasswordChanged="PasswordBox_PasswordChanged"/>
         <Button Grid.Row="4" Grid.Column="1" Content="Add" Width="75" IsDefault="True" Command="{Binding Path=AddAccountCommand}"/>
     </Grid>
-</UserControl>
+</Page>

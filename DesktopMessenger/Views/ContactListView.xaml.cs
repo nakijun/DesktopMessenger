@@ -22,7 +22,6 @@ namespace DesktopMessenger.Views
         public ContactListView()
         {
             InitializeComponent();
-            DataContext = new ContactListViewModel();
         }
     }
 }
