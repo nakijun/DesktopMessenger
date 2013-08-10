@@ -167,6 +167,10 @@
       <Project>{97AA30F7-50F9-40F3-BAA1-E61495F42136}</Project>
       <Name>DesktopMessenger.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesktopMessenger.Dummy\DesktopMessenger.Dummy.csproj">
+      <Project>{13307169-98E5-463F-85D6-E654C9EDF4E9}</Project>
+      <Name>DesktopMessenger.Dummy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DesktopMessenger.Facebook\DesktopMessenger.Facebook.csproj">
       <Project>{03FB2171-E229-4336-A3F1-305BD6AA0ED2}</Project>
       <Name>DesktopMessenger.Facebook</Name>

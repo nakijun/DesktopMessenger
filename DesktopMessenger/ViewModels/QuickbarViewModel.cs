@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace DesktopMessenger.ViewModels
         private readonly ContactListViewModel _contactListViewModel;
 
         public ICommand ShowContactListCommand { get; private set; }
+        public ObservableCollection<ChatView> Chats { get { return ServiceManager.Chats; } }
 
         public QuickbarViewModel()
         {

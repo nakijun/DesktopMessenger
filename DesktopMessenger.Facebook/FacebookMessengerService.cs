@@ -19,6 +19,8 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Events
+
+        public event EventHandler<EventArgs> LoggedIn;
         public event EventHandler<PresenceEventArgs> PresenceUpdated;
         public event EventHandler<MessageEventArgs> MessageReceived;
         public event EventHandler<IsTypingEventArgs> IsTypingUpdated;
@@ -76,17 +78,20 @@ namespace DesktopMessenger.Facebook
         #endregion
 
         #region Event Handlers
+
         private void XmppClientConnection_OnLogin(object sender)
         {
-            if (_xmppClientConnection.Authenticated)
-                Presence = PresenceStatus.Online;
-            else
+            if (!_xmppClientConnection.Authenticated)
                 throw new AuthenticationException();
+            
+            Presence = PresenceStatus.Online;
+            if (LoggedIn != null)
+                LoggedIn(this, EventArgs.Empty);
         }
 
         private void XmppClientConnection_OnAuthError(object sender, Element e)
         {
-            throw new NotImplementedException();
+            throw new AuthenticationException();
         }
 
         private void XmppClientConnection_OnPresence(object sender, Presence pres)

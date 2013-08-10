@@ -8,6 +8,7 @@ namespace DesktopMessenger.Common
 {
     public interface IMessengerService : IDisposable
     {
+        event EventHandler<EventArgs> LoggedIn;
         event EventHandler<PresenceEventArgs> PresenceUpdated;
         event EventHandler<MessageEventArgs> MessageReceived;
         event EventHandler<IsTypingEventArgs> IsTypingUpdated;
