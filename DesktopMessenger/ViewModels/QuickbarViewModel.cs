@@ -11,22 +11,14 @@ namespace DesktopMessenger.ViewModels
 {
     internal class QuickbarViewModel
     {
-        private readonly ContactListViewModel _contactListViewModel;
-
-        public ICommand ShowContactListCommand { get; private set; }
+        public ContactListView ContactListView { get; private set; }
         public ObservableCollection<ChatView> Chats { get { return ServiceManager.Chats; } }
 
         public QuickbarViewModel()
         {
-            _contactListViewModel = new ContactListViewModel();
+            ContactListView = new ContactListView {DataContext = new ContactListViewModel()};
 
-            ShowContactListCommand = new ShowContactListCommand(this);
-        }
-
-        public void ShowContactList()
-        {
-            var contactListView = new ContactListView { DataContext = _contactListViewModel };
-            contactListView.Show();
+            //ShowContactListCommand = new ShowContactListCommand(this);
         }
     }
 }

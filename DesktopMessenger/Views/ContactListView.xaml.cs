@@ -17,7 +17,7 @@ namespace DesktopMessenger.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ContactListView : Window
+    public partial class ContactListView : UserControl
     {
         public ContactListView()
         {

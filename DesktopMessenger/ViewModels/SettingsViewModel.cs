@@ -11,12 +11,10 @@ using DesktopMessenger.Views;
 
 namespace DesktopMessenger.ViewModels
 {
-    internal class SettingsViewModel : INotifyPropertyChanged
+    internal class SettingsViewModel : ViewModelBase
     {
         private readonly AccountSettingsViewModel _accountSettingsViewModel;
         private Page _currentPage;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Account> Accounts
         {
@@ -39,12 +37,6 @@ namespace DesktopMessenger.ViewModels
 
             //TODO show general settings
             CurrentPage = new AccountSettingsView {DataContext = _accountSettingsViewModel};
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -64,7 +64,6 @@
     <Compile Include="AccountManager.cs" />
     <Compile Include="Commands\AddAcountCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\ShowContactListCommand.cs" />
     <Compile Include="Commands\ShowSettingsCommand.cs" />
     <Compile Include="Models\ContactList.cs" />
     <Compile Include="ServiceManager.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="ViewModels\AccountSettingsViewModel.cs" />
     <Compile Include="ViewModels\QuickbarViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AccountSettingsView.xaml.cs">
       <DependentUpon>AccountSettingsView.xaml</DependentUpon>
     </Compile>

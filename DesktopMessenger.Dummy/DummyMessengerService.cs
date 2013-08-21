@@ -24,7 +24,10 @@ namespace DesktopMessenger.Dummy
             _timer = new Timer(delegate
             {
                 if (MessageReceived != null)
-                    MessageReceived(this, new MessageEventArgs("foobar", "hello world"));
+                {
+                    MessageReceived(this, new MessageEventArgs("foo", "test message"));
+                    MessageReceived(this, new MessageEventArgs("bar", "hello world"));
+                }
             }, null, 0, 5000);
         }
 
