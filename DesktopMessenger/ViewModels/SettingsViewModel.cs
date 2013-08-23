@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using DesktopMessenger.Commands;
 using DesktopMessenger.Common;
-using DesktopMessenger.Models;
+using DesktopMessenger.Common.Models;
 using DesktopMessenger.Views;
 
 namespace DesktopMessenger.ViewModels

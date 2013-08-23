@@ -9,16 +9,20 @@ using DesktopMessenger.Views;
 
 namespace DesktopMessenger.ViewModels
 {
-    internal class QuickbarViewModel
+    internal class QuickbarViewModel : ViewModelBase
     {
         public ContactListView ContactListView { get; private set; }
         public ObservableCollection<ChatView> Chats { get { return ServiceManager.Chats; } }
 
+        public ICommand ShowSettingsCommand { get; private set; }
+        public ICommand ShutdownCommand { get; private set; }
+
         public QuickbarViewModel()
         {
-            ContactListView = new ContactListView {DataContext = new ContactListViewModel()};
+            ContactListView = new ContactListView { DataContext = new ContactListViewModel() };
 
-            //ShowContactListCommand = new ShowContactListCommand(this);
+            ShowSettingsCommand = new DelegateCommand(o => new SettingsView { DataContext = new SettingsViewModel() }.ShowDialog());
+            ShutdownCommand = new DelegateCommand(o => App.Current.Shutdown());
         }
     }
 }

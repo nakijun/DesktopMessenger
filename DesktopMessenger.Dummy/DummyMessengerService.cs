@@ -21,14 +21,20 @@ namespace DesktopMessenger.Dummy
 
         public DummyMessengerService()
         {
-            _timer = new Timer(delegate
-            {
-                if (MessageReceived != null)
+            bool typing = false;
+            _timer = new Timer(state =>
                 {
-                    MessageReceived(this, new MessageEventArgs("foo", "test message"));
-                    MessageReceived(this, new MessageEventArgs("bar", "hello world"));
-                }
-            }, null, 0, 5000);
+                    if (IsTypingUpdated != null)
+                    {
+                        typing = !typing;
+                        IsTypingUpdated(this, new IsTypingEventArgs("foo", typing));
+                    }
+                    if (MessageReceived != null)
+                    {
+                        MessageReceived(this, new MessageEventArgs("foo", "test message " + DateTime.Now));
+                        MessageReceived(this, new MessageEventArgs("bar", "hello world " + DateTime.Now));
+                    }
+                }, null, 0, 5000);
         }
 
         public void Connect(string username, SecureString password)

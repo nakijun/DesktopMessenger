@@ -7,11 +7,17 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <!-- TODO implement themes -->
-        <Label Grid.Row="0" Foreground="White" Background="LightGray" Content="TITLE"/>
+        <TextBlock Grid.Row="0" Foreground="White" Background="LightGray" Text="{Binding Path=Contact.Name}"/>
         <ListBox Grid.Row="1" ItemsSource="{Binding Path=Messages}">
-            <ItemsControl.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Path=Contact.Name}"/>
@@ -19,8 +25,9 @@
                         <TextBlock Text="{Binding Path=Content}"/>
                     </StackPanel>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox Grid.Row="2" Foreground="Black" Background="White" Text="INPUT"/>
+        <TextBlock Grid.Row="2" Text="{Binding Path=IsTyping}"/>
+        <TextBox Grid.Row="3" Foreground="Black" Background="White"/>
     </Grid>
 </UserControl>

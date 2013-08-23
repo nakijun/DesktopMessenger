@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using DesktopMessenger.Common;
-using DesktopMessenger.Models;
+using DesktopMessenger.Common.Models;
 using DesktopMessenger.Properties;
 using DesktopMessenger.ViewModels;
 using DesktopMessenger.Views;

@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="DesktopMessenger.Views.ContactListView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:tb="http://www.hardcodet.net/taskbar"
         Height="539" Width="281">
     <StackPanel>
     	<StackPanel Height="29" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -31,14 +30,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
-        
-        <tb:TaskbarIcon ToolTip="Desktop Messenger">
-            <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu Background="AliceBlue">
-                    <MenuItem Header="Settings" Command="{Binding Path=ShowSettingsCommand}"/>
-                    <MenuItem Header="Quit" Command="{Binding Path=ExitCommand}"/>
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
-        </tb:TaskbarIcon>
     </StackPanel>    
 </UserControl>

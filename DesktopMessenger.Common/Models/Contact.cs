@@ -1,14 +1,9 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
-namespace DesktopMessenger.Models
+namespace DesktopMessenger.Common.Models
 {
-    internal class Contact : INotifyPropertyChanged
+    public class Contact : INotifyPropertyChanged
     {
         private Bitmap _picture;
         private string _name;
