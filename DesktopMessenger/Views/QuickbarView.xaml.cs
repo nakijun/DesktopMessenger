@@ -25,7 +25,6 @@ namespace DesktopMessenger.Views
             DataContext = new QuickbarViewModel();
         }
 
-<<<<<<< HEAD
         private void OnDrag(object sender, MouseButtonEventArgs e)
         {
             try
@@ -34,13 +33,7 @@ namespace DesktopMessenger.Views
             }
             catch (Exception)
             {
-                
             }
-=======
-        private void expander_Expanded(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	// TODO: Add event handler implementation here.
->>>>>>> e50ad9c1eaa9db630453d423d99489c0233002a8
         }
     }
 }
