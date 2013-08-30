@@ -24,5 +24,10 @@ namespace DesktopMessenger.Views
             InitializeComponent();
             DataContext = new QuickbarViewModel();
         }
+
+        private void expander_Expanded(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	// TODO: Add event handler implementation here.
+        }
     }
 }

@@ -33,8 +33,9 @@ namespace DesktopMessenger
 
         public static void Connect(Account account)
         {
+            
             account.Service.Connect(account.Username, account.Password);
-
+            
             //HACK here just for testing
             account.Service.MessageReceived += Service_MessageReceived;
             account.Service.PresenceUpdated += Service_PresenceUpdated;

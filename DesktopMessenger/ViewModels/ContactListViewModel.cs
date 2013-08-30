@@ -15,6 +15,9 @@ namespace DesktopMessenger.ViewModels
     internal class ContactListViewModel
     {
         public ICommand ShowSettingsCommand { get; private set; }
+        public ICommand SetStatusCommand { get; private set; }  
+
+        public String Status { get; private set; }
 
         public ObservableCollection<ContactList> ContactLists
         {
