@@ -24,5 +24,17 @@ namespace DesktopMessenger.Views
             InitializeComponent();
             DataContext = new QuickbarViewModel();
         }
+
+        private void OnDrag(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
     }
 }
