@@ -12,12 +12,12 @@ using DesktopMessenger.Properties;
 
 namespace DesktopMessenger.ViewModels
 {
-    internal class ContactListViewModel
+    internal class ContactListViewModel : ViewModelBase
     {
         public ICommand ShowSettingsCommand { get; private set; }
         public ICommand SetStatusCommand { get; private set; }  
 
-        public String Status { get; private set; }
+        public string Status { get; private set; }
 
         public ObservableCollection<ContactList> ContactLists
         {

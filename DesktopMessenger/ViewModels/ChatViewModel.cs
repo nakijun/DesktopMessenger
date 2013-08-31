@@ -16,11 +16,7 @@ namespace DesktopMessenger.ViewModels
         public string IsTyping
         {
             get { return _isTyping; }
-            private set
-            {
-                _isTyping = value;
-                OnPropertyChanged("IsTyping");
-            }
+            private set { _isTyping = value; OnPropertyChanged("IsTyping"); }
         }
 
         public Contact Contact { get; private set; } //TODO change to Contacts
@@ -46,7 +42,7 @@ namespace DesktopMessenger.ViewModels
         private void MessageReceived(object sender, MessageEventArgs e)
         {
             if (e.Contact == Contact.Name) //FIXME work with ids
-                Application.Current.Dispatcher.Invoke(
+                App.Current.Dispatcher.Invoke(
                     new Action(() => Messages.Add(new Message {Contact = Contact, Content = e.Message})));
         }
     }

@@ -18,7 +18,7 @@ namespace DesktopMessenger.Views
     /// <summary>
     /// Interaction logic for AccountSettingsView.xaml
     /// </summary>
-    public partial class AccountSettingsView : Page
+    public partial class AccountSettingsView : UserControl
     {
         public AccountSettingsView()
         {

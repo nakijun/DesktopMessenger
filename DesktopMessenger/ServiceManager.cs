@@ -54,7 +54,7 @@ namespace DesktopMessenger
             {
                 contactList = new ContactList();
                 _contactLists.Add(service, contactList);
-                Application.Current.Dispatcher.Invoke(new Action(() => ContactLists.Add(contactList)));
+                App.Current.Dispatcher.Invoke(new Action(() => ContactLists.Add(contactList)));
             }
 
             switch (e.PresenceStatus)
@@ -63,14 +63,14 @@ namespace DesktopMessenger
                     if (!contactList.Contacts.Any(c => c.Name == e.Contact))
                     {
                         var contact = new Contact(e.Contact) { Name = e.Contact }; //FIXME
-                        Application.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Add(contact)));
+                        App.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Add(contact)));
                     }
                     break;
                 case PresenceStatus.Offline:
                     if (contactList.Contacts.Any(c => c.Name == e.Contact))
                     {
                         var contact = contactList.Contacts.Single(c => c.Name == e.Contact);
-                        Application.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Remove(contact)));
+                        App.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Remove(contact)));
                     }
                     break;
             }
@@ -95,7 +95,7 @@ namespace DesktopMessenger
             ChatView chatView;
             if (!_chats.TryGetValue(e.Contact, out chatView))
             {
-                Application.Current.Dispatcher.Invoke(new Action(() =>
+                App.Current.Dispatcher.Invoke(new Action(() =>
                     {
                         var contact = new Contact(Guid.NewGuid().ToString()) { Name = e.Contact };
                         var chatViewModel = new ChatViewModel(service, contact);

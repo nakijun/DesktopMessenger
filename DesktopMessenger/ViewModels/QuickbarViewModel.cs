@@ -12,7 +12,14 @@ namespace DesktopMessenger.ViewModels
 {
     internal class QuickbarViewModel : ViewModelBase
     {
-        public ContactListView ContactListView { get; private set; }
+        private ContactListView _contactListView;
+
+        public ContactListView ContactListView
+        {
+            get { return _contactListView; }
+            private set { _contactListView = value; OnPropertyChanged("ContactListView"); }
+        }
+
         public ObservableCollection<ChatView> Chats { get { return ServiceManager.Chats; } }
 
         public ICommand ShowSettingsCommand { get; private set; }
@@ -20,9 +27,9 @@ namespace DesktopMessenger.ViewModels
 
         public QuickbarViewModel()
         {
-            ContactListView = new ContactListView { DataContext = new ContactListViewModel() };
+            ContactListView = new ContactListView {DataContext = new ContactListViewModel()};
 
-            ShowSettingsCommand = new DelegateCommand(o => new SettingsView { DataContext = new SettingsViewModel() }.ShowDialog());
+            ShowSettingsCommand = new DelegateCommand(o => new SettingsView {DataContext = new SettingsViewModel()}.ShowDialog());
             ShutdownCommand = new DelegateCommand(o => App.Current.Shutdown());
         }
     }

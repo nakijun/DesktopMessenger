@@ -13,30 +13,22 @@ namespace DesktopMessenger.ViewModels
 {
     internal class SettingsViewModel : ViewModelBase
     {
-        private readonly AccountSettingsViewModel _accountSettingsViewModel;
-        private Page _currentPage;
+        private UserControl _currentView;
 
         public ObservableCollection<Account> Accounts
         {
             get { return AccountManager.Accounts; }
         }
 
-        public Page CurrentPage
+        public UserControl CurrentView
         {
-            get { return _currentPage; }
-            set
-            {
-                _currentPage = value;
-                OnPropertyChanged("CurrentPage");
-            }
+            get { return _currentView; }
+            set { _currentView = value; OnPropertyChanged("CurrentView"); }
         }
 
         public SettingsViewModel()
         {
-            _accountSettingsViewModel = new AccountSettingsViewModel();
-
-            //TODO show general settings
-            CurrentPage = new AccountSettingsView {DataContext = _accountSettingsViewModel};
+            CurrentView = new AccountSettingsView { DataContext = new AccountSettingsViewModel() };
         }
     }
 }

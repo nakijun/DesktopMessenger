@@ -15,18 +15,13 @@ namespace DesktopMessenger.ViewModels
 
         public ICommand AddAccountCommand { get; private set; }
 
-        public string[] Services
-        {
-            get { return MessengerServiceFactory.Services; }
-        }
+        public string[] Services { get { return MessengerServiceFactory.Services; } }
         public string SelectedService { get; set; }
-
         public string Username
         {
             get { return _username; }
             set { _username = value; OnPropertyChanged("Username"); }
         }
-
         public SecureString Password { get; set; }
 
         public AccountSettingsViewModel()
