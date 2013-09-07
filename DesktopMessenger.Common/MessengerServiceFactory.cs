@@ -15,22 +15,15 @@ namespace DesktopMessenger.Common
         static MessengerServiceFactory()
         {
             var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll");
-            foreach (var file in files)
+            foreach (var type in files.Select(Assembly.LoadFile).SelectMany(asm => asm.GetExportedTypes().Where(type => type.GetInterface("IMessengerService") != null)))
             {
-                var asm = Assembly.LoadFile(file);
-                foreach (var type in asm.GetExportedTypes())
+                string name;
+                using (var service = Activator.CreateInstance(type) as IMessengerService)
                 {
-                    if (type.GetInterface("IMessengerService") == null)
-                        continue;
-
-                    string name;
-                    using (var service = Activator.CreateInstance(type) as IMessengerService)
-                    {
-                        name = service.ServiceName;
-                    }
-                    if (!_services.ContainsKey(name))
-                        _services.Add(name, type);
+                    name = service.ServiceName;
                 }
+                if (!String.IsNullOrWhiteSpace(name) && !_services.ContainsKey(name))
+                    _services.Add(name, type);
             }
         }
 

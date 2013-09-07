@@ -9,14 +9,14 @@ namespace DesktopMessenger.Facebook
 {
     internal static class FacebookConverter
     {
-        public static PresenceStatus ToPresenceStatus(PresenceType presence)
+        public static Status ToPresenceStatus(PresenceType presence)
         {
             switch (presence)
             {
                 case PresenceType.available:
-                    return PresenceStatus.Online;
+                    return Status.Online;
                 case PresenceType.unavailable:
-                    return PresenceStatus.Offline;
+                    return Status.Offline;
                 default:
                     throw new NotSupportedException("Conversion not defined for this presence type.");
             }

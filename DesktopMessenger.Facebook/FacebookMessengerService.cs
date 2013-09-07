@@ -15,13 +15,13 @@ namespace DesktopMessenger.Facebook
     {
         #region Fields
         private readonly XmppClientConnection _xmppClientConnection;
-        private PresenceStatus _presenceStatus;
+        private Status _status;
         #endregion
 
         #region Events
 
         public event EventHandler<EventArgs> LoggedIn;
-        public event EventHandler<PresenceEventArgs> PresenceUpdated;
+        public event EventHandler<StatusUpdatedEventArgs> StatusUpdated;
         public event EventHandler<MessageEventArgs> MessageReceived;
         public event EventHandler<IsTypingEventArgs> IsTypingUpdated;
         #endregion
@@ -29,16 +29,16 @@ namespace DesktopMessenger.Facebook
         #region Properties
         public string ServiceName { get { return "Facebook"; } }
 
-        public PresenceStatus Presence
+        public Status Status
         {
-            get { return _presenceStatus; }
+            get { return _status; }
             set
             {
                 switch (value)
                 {
-                    case PresenceStatus.Online:
+                    case Status.Online:
                         _xmppClientConnection.Send(new Presence(ShowType.chat, "Online") { Type = PresenceType.available });
-                        _presenceStatus = value;
+                        _status = value;
                         break;
                 }
             }
@@ -84,7 +84,7 @@ namespace DesktopMessenger.Facebook
             if (!_xmppClientConnection.Authenticated)
                 throw new AuthenticationException();
             
-            Presence = PresenceStatus.Online;
+            Status = Status.Online;
             if (LoggedIn != null)
                 LoggedIn(this, EventArgs.Empty);
         }
@@ -96,8 +96,8 @@ namespace DesktopMessenger.Facebook
 
         private void XmppClientConnection_OnPresence(object sender, Presence pres)
         {
-            if (PresenceUpdated != null)
-                PresenceUpdated(this, new PresenceEventArgs(pres.From.User.Substring(1), FacebookConverter.ToPresenceStatus(pres.Type)));
+            if (StatusUpdated != null)
+                StatusUpdated(this, new StatusUpdatedEventArgs(pres.From.User.Substring(1), FacebookConverter.ToPresenceStatus(pres.Type)));
         }
 
         private void XmppClientConnection_OnMessage(object sender, Message msg)

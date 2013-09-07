@@ -15,71 +15,32 @@ namespace DesktopMessenger
     internal static class ServiceManager
     {
         private static readonly IDictionary<string, ChatView> _chats;
-        private static readonly IDictionary<IMessengerService, ContactList> _contactLists;
 
         public static ObservableCollection<IMessengerService> Services { get; private set; }
-        public static ObservableCollection<ContactList> ContactLists { get; private set; }
         public static ObservableCollection<ChatView> Chats { get; private set; }
+
+        public static event EventHandler<AccountAddedEventArgs> Added;
+        public static event EventHandler<EventArgs> Removed;
 
         static ServiceManager()
         {
             _chats = new Dictionary<string, ChatView>();
-            _contactLists = new Dictionary<IMessengerService, ContactList>();
 
             Services = new ObservableCollection<IMessengerService>();
-            ContactLists = new ObservableCollection<ContactList>();
             Chats = new ObservableCollection<ChatView>();
         }
 
-        public static void Connect(Account account)
+        public static void Add(Account account)
         {
-            
-            account.Service.Connect(account.Username, account.Password);
-            
-            //HACK here just for testing
-            account.Service.MessageReceived += Service_MessageReceived;
-            account.Service.PresenceUpdated += Service_PresenceUpdated;
-
+            account.Service.MessageReceived += Service_MessageReceived; //HACK remove later
             Services.Add(account.Service);
+            if (Added != null)
+                Added(null, new AccountAddedEventArgs(account));
         }
 
-        private static void Service_PresenceUpdated(object sender, PresenceEventArgs e)
-        {
-            var service = sender as IMessengerService;
-            if (service == null)
-                return;
-
-            ContactList contactList;
-            if (!_contactLists.TryGetValue(service, out contactList))
-            {
-                contactList = new ContactList();
-                _contactLists.Add(service, contactList);
-                App.Current.Dispatcher.Invoke(new Action(() => ContactLists.Add(contactList)));
-            }
-
-            switch (e.PresenceStatus)
-            {
-                case PresenceStatus.Online:
-                    if (!contactList.Contacts.Any(c => c.Name == e.Contact))
-                    {
-                        var contact = new Contact(e.Contact) { Name = e.Contact }; //FIXME
-                        App.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Add(contact)));
-                    }
-                    break;
-                case PresenceStatus.Offline:
-                    if (contactList.Contacts.Any(c => c.Name == e.Contact))
-                    {
-                        var contact = contactList.Contacts.Single(c => c.Name == e.Contact);
-                        App.Current.Dispatcher.Invoke(new Action(() => contactList.Contacts.Remove(contact)));
-                    }
-                    break;
-            }
-        }
-
-        public static void Disconnect(IMessengerService service)
+        public static void Remove(IMessengerService service)
         {
             service.MessageReceived -= Service_MessageReceived;
-            service.PresenceUpdated -= Service_PresenceUpdated;
 
             service.Dispose();
 

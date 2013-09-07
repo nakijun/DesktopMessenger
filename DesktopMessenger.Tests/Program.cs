@@ -31,14 +31,14 @@ namespace DesktopMessenger.Tests
 
             using (var facebook = MessengerServiceFactory.CreateInstance("Facebook"))
             {
-                facebook.PresenceUpdated += Facebook_PresenceUpdated;
+                facebook.StatusUpdated += Facebook_StatusUpdated;
                 facebook.MessageReceived += Facebook_MessageReceived;
                 facebook.IsTypingUpdated += Facebook_IsTypingUpdated;
 
                 facebook.Connect(username, password);
 
                 Console.ReadLine();
-                facebook.PresenceUpdated -= Facebook_PresenceUpdated;
+                facebook.StatusUpdated -= Facebook_StatusUpdated;
                 facebook.MessageReceived -= Facebook_MessageReceived;
                 facebook.IsTypingUpdated -= Facebook_IsTypingUpdated;
             }
@@ -54,9 +54,9 @@ namespace DesktopMessenger.Tests
             Console.WriteLine("{0}: {1}", e.Contact, e.Message);
         }
 
-        static void Facebook_PresenceUpdated(object sender, PresenceEventArgs e)
+        static void Facebook_StatusUpdated(object sender, StatusUpdatedEventArgs e)
         {
-            Console.WriteLine("{0} ({1})", e.Contact, e.PresenceStatus);
+            Console.WriteLine("{0} ({1})", e.Contact, e.Status);
         }
     }
 }

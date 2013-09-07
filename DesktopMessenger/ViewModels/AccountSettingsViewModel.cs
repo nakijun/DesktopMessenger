@@ -40,7 +40,7 @@ namespace DesktopMessenger.ViewModels
             var service = MessengerServiceFactory.CreateInstance(SelectedService);
             var account = new Account {Username = Username, Password = Password, Service = service};
             AccountManager.Add(account);
-            ServiceManager.Connect(account);
+            ServiceManager.Add(account);
         }
     }
 }
