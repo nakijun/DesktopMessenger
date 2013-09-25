@@ -69,6 +69,8 @@
     <Compile Include="AccountManager.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="AccountAddedEventArgs.cs" />
+    <Compile Include="MessengerServiceFactory.cs" />
+    <Compile Include="Models\ContactList.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="ThemeManager.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />

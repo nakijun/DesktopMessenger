@@ -29,7 +29,7 @@ namespace DesktopMessenger.Tests
                 }
             } while (key.Key != ConsoleKey.Enter);
 
-            using (var facebook = MessengerServiceFactory.CreateInstance("Facebook"))
+            using (var facebook = new FacebookMessengerService())
             {
                 facebook.StatusUpdated += Facebook_StatusUpdated;
                 facebook.MessageReceived += Facebook_MessageReceived;

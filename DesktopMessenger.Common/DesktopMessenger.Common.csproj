@@ -42,10 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IsTypingEventArgs.cs" />
-    <Compile Include="MessengerServiceFactory.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\ContactList.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="StatusUpdatedEventArgs.cs" />
     <Compile Include="IMessengerService.cs" />

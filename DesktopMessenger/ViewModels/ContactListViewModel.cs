@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using DesktopMessenger.Commands;
 using DesktopMessenger.Common;
 using DesktopMessenger.Common.Models;
+using DesktopMessenger.Models;
 using DesktopMessenger.Views;
 using DesktopMessenger.Properties;
 
